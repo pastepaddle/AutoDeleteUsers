@@ -1,0 +1,111 @@
+<!-- INCLUDE overall_header.html -->
+
+<h1>{L_ACP_ADU_PAGETITLE}</h1>
+
+<p>
+  {L_ACP_ADU_EXPLAIN}
+</p>
+
+<!-- IF DEBUG_MESSAGE -->
+<p>
+  <strong>{L_ACP_ADU_DEBUG_MSG}</strong> {DEBUG_MESSAGE}
+</p><!-- ENDIF -->
+<!-- IF ERROR_MESSAGE -->
+<p>
+  <span style="color: #dd0000;"><strong>{L_ACP_ADU_ERROR} {ERROR_MESSAGE}</strong></span>
+</p><!-- ENDIF -->
+
+<form id="autodeleteform" method="post" action="{U_ACTION}">
+
+  <fieldset>
+    <legend>
+      {L_USERS_AUTO_DELETE}
+    </legend>
+    <dl>
+      <dt>
+        <label for="max_userposts">{L_MAX_USERPOSTS}</label>
+        <br />
+        <span>{L_MAX_USERPOSTS_EXPLAIN}</span>
+      </dt>
+      <dd>
+        <input type="number" id="max_userposts" name="max_userposts" value="{MAX_POSTS}" min="0" />
+        <span>{L_POSTS}</span>
+      </dd>
+    </dl>
+    <dl>
+      <dt>
+        <label for="member_since">{L_MIN_MEMBER_SINCE}</label>
+        <br />
+        <span>{L_MIN_MEMBER_SINCE_EXPLAIN}</span>
+      </dt>
+      <dd>
+        <input type="number" id="member_since" name="member_since" value="{MEMBER_SINCE}" min="0" />
+        <span>{L_DAYS}</span>
+      </dd>
+    </dl>
+    <dl>
+      <dt>
+        <label for="check_schedule">{L_CHECK_SCHEDULE}</label>
+        <br />
+        <span>{L_CHECK_SCHEDULE_EXPLAIN}</span>
+      </dt>
+      <dd>
+        <input type="number" id="check_schedule" name="check_schedule" value="{CHECK_SCHEDULE}" min="0" />
+        <span>{L_Days}</span>
+      </dd>
+    </dl>
+    <dl>
+      <dt>
+        <label for="autodelete">{L_AUTODELETE}</label>
+        <br />
+        <span>{L_AUTODELETE_EXPLAIN}</span>
+      </dt>
+      <dd>
+        <input type="checkbox" id="autodelete" name="autodelete" {AUTODELETE} />
+      </dd>
+    </dl>
+    <p class="submit-buttons">
+      <input class="button2" type="submit" name="preview" id="preview" value="{L_PREVIEW}" />
+        <input class="button1" type="submit" name="update" id="update" value="{L_SUBMIT_ONLY}" />
+      <input class="button1" type="submit" name="delete" id="delete" value="{L_SUBMIT_AND_DELETE}" />
+    </p>
+  </fieldset>
+  </form>
+
+  <p>
+      {L_ACP_ADU_TABLE_EXPLAIN}
+  </p>
+
+  <table cellspacing="1">
+    <thead>
+      <tr>
+        <th>{L_ADU_USER_ID}</th>
+        <th>{L_ADU_USER_NAME}</th>
+        <th>{L_ADU_USER_REG_ON}</th>
+        <th>{L_ADU_USER_REG_SINCE}</th>
+        <th>{L_ADU_USER_LAST_LOGIN}</th>
+        <th>{L_ADU_USER_POSTS}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- IF not .users -->
+      <tr>
+        <td class="row1" colspan="6" style="text-align: center;">{L_ADU_NO_USER}</td>
+      </tr>
+      <!-- ENDIF -->
+      <!-- BEGIN users -->
+      <!-- IF users.S_ROW_COUNT is even -->
+      <tr class="row1">
+        <!-- ELSE -->
+      <tr class="row2">
+        <!-- ENDIF -->
+        <td style="vertical-align: top;">{users.USER_ID}</td>
+        <td style="vertical-align: top;">{users.USER_NAME}</td>
+        <td style="vertical-align: top;">{users.REG_ON}</td>
+        <td style="vertical-align: top;">{users.REG_SINCE}</td>
+        <td style="vertical-align: top;">{users.LAST_LOGIN}</td>
+        <td style="vertical-align: top;">{users.POSTS}</td>
+      </tr>
+      <!-- END users -->
+    </tbody>
+  </table>

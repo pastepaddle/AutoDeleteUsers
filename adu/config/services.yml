@@ -1,0 +1,12 @@
+services:
+    paddle.adu.cron.task.paddle_adu_delete_users_task:
+        class: paddle\adu\cron\task\paddle_adu_delete_users_task
+        arguments:
+            - @config
+            - @log
+            - @dbal.conn
+            - @user
+        calls:
+            - [set_name, [cron.task.paddle_adu_delete_users_task]]
+        tags:
+            - { name: cron.task }
